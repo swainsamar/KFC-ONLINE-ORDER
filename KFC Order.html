@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>KFC Order</title>
+        <style>
+            tr{
+                background-color:maroon;
+                color:white;
+                text-align:center;
+        }
+        dt{
+                background-color:maroon;
+                color:white;
+                font-weight:bold;
+        }
+        </style>
+    <script>
+        function Orderclick(){
+            document.getElementById("Summary").style.display="block";
+            document.getElementById("tblOrder").style.display="none";
+            var txtName=document.getElementById("txtName").value;
+            var optBurger=document.getElementById("optBurger");
+            var optRoller=document.getElementById("optRoller");
+            var optFries=document.getElementById("optFries");
+            var optKrusher=document.getElementById("optKrusher");
+            var mcost,acost,mName,aName="";
+            if(optBurger.checked) {
+                mcost = 120;
+                mName = optBurger.value;
+            }
+            if(optRoller.checked) {
+                mcost = 100;
+                mName = optRoller.value;
+            }
+            if(optFries.checked) {
+                acost = 60;
+                mcost = mcost + acost;
+                aName += optFries.value + "<br>";
+            }
+            if(optKrusher.checked){
+                acost=40;
+                mcost=mcost+acost;
+                aName+=optKrusher.value+"<br>";
+            }
+            document.getElementById("lblName").innerHTML=txtName;
+            document.getElementById("lblMeal").innerHTML=mName;
+            document.getElementById("lblAdon").innerHTML=aName;
+            document.getElementById("lblTotal").innerHTML="&#x20B9;"+mcost;
+        }
+    </script>
+</head>
+<body>
+<div>
+    <font size="6">
+        <table width="500" border="2" cellspacing="4" cellpadding="4"
+               align="center" id="tblOrder">
+            <tr>
+                <td colspan="2">
+                    <img src="IMAGES/K.png">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">Customer Info</td>
+            </tr>
+            <tr>
+                <td>Customer Name</td>
+                <td>
+                    <input type="text" id="txtName">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">Select Your Meal</td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="IMAGES/B.jpg"><br>
+                    <input type="radio" id="optBurger" value="OMGBurger"
+                           Name="Meal">OMGBurger(&#x20B9;120/-)
+                </td>
+                <td>
+                    <img src="IMAGES/E.jpg" height="700" width="700"><br>
+                    <input type="radio" id="optRoller" value="OMGRoller"
+                           Name="Meal">OMGRoller(&#x20B9;100/-)
+                </td>
+            </tr>
+                <tr>
+            <td colspan="2">Select Ad-on
+
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="IMAGES/E1.jpg"><br>
+                    <input type="checkbox" id="optFries" value="OMGFries"
+                           Name="Meal">OMGFries(&#x20B9;50/-)
+                </td>
+                <td>
+                    <img src="IMAGES/Ch.jpg"><br>
+                    <input type="checkbox" id="optKrusher" value="OMGKrusher"
+                           Name="Meal">OMGKrusher(&#x20B9;140/-)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="place Order" onclick="Orderclick()">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <fieldset id="Summary" style="display:none">
+            <legend>Order Summary</legend>
+            <dl>
+                <dt>Customer Name</dt>
+                <dd id="lblName"></dd>
+                <dt>Select Meal</dt>
+                <dd id="lblMeal"></dd>
+                <dt>Select Ad-on</dt>
+                <dd id="lblAdon"></dd>
+                <dt>Total Amount</dt>
+                <dd id="lblTotal"></dd>
+            </dl>
+            <div align="center">
+                <a href="KFC Order.html">Change Order</a>
+            </div>
+        </fieldset>
+    </font>
+</div>
+</body>
+</html>
